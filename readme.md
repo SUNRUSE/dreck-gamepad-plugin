@@ -23,7 +23,7 @@ Adds a library of TypeScript which provides simple, lowest-common-denominator ga
 Run the following in a Bash shell at the root of your project:
 
 ```bash
-git submodule add https://github.com/sunruse/dreck-gamepad-plugin submodules/plugins/gamepad
+git submodule add https://github.com/sunruse/dreck-gamepad-plugin plugins/gamepad
 ```
 
 ## Example
