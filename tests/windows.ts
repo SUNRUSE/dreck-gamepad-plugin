@@ -374,9 +374,69 @@ operatingSystem(`windows`, () => {
       ]
     );
 
-    // TODO capping
-    // TODO non-capping
-    // TODO firefox
-    // TODO macos
+    scenario(
+      [
+        connect(`Xbox 360 Controller (XInput STANDARD GAMEPAD)`, 123, 4, 17),
+        adjustAxis(123, 0, -1),
+        adjustAxis(123, 1, 1),
+      ],
+      [],
+      [
+        statusIs(true, false, false, false, false, false, false, false),
+        pullsStickDownAndLeft(0),
+      ]
+    );
+
+    scenario(
+      [
+        connect(`Xbox 360 Controller (XInput STANDARD GAMEPAD)`, 123, 4, 17),
+        pressButton(123, 14),
+        pressButton(123, 13),
+      ],
+      [],
+      [
+        statusIs(true, false, false, false, false, false, false, false),
+        pullsStickDownAndLeft(0),
+      ]
+    );
+
+    scenario(
+      [
+        connect(`Xbox 360 Controller (XInput STANDARD GAMEPAD)`, 123, 4, 17),
+        pressButton(123, 14),
+        adjustAxis(123, 1, 1),
+      ],
+      [],
+      [
+        statusIs(true, false, false, false, false, false, false, false),
+        pullsStickDownAndLeft(0),
+      ]
+    );
+
+    scenario(
+      [
+        connect(`Xbox 360 Controller (XInput STANDARD GAMEPAD)`, 123, 4, 17),
+        adjustAxis(123, 0, 0.05),
+        adjustAxis(123, 1, -0.05),
+      ],
+      [],
+      [
+        statusIs(true, false, false, false, false, false, false, false),
+        isNeutral(0),
+      ]
+    );
+
+    scenario(
+      [
+        connect(`Xbox 360 Controller (XInput STANDARD GAMEPAD)`, 123, 4, 17),
+        adjustAxis(123, 0, 0.3),
+        adjustAxis(123, 1, -0.2),
+      ],
+      [],
+      [
+        statusIs(true, false, false, false, false, false, false, false),
+        stickIsBetweenCenterAndEdge(0),
+      ]
+    );
   });
 });

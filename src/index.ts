@@ -283,6 +283,18 @@ class GamepadManager {
             }
           }
         }
+
+        const magnitudeSquared = mapped.x * mapped.x + mapped.y * mapped.y;
+
+        if (magnitudeSquared < 0.1) {
+          mapped.x = 0;
+          mapped.y = 0;
+        } else if (magnitudeSquared > 1) {
+          const magnitude = Math.sqrt(magnitudeSquared);
+
+          mapped.x /= magnitude;
+          mapped.y /= magnitude;
+        }
       }
     }
   }

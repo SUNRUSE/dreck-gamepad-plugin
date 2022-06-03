@@ -511,6 +511,32 @@ const pressesPause = (index: number): PressesPauseAssertion => ({
   index,
 });
 
+type PullsStickDownAndLeftAssertion = {
+  readonly type: `pullsStickDownAndLeft`;
+  readonly index: number;
+};
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const pullsStickDownAndLeft = (
+  index: number
+): PullsStickDownAndLeftAssertion => ({
+  type: `pullsStickDownAndLeft`,
+  index,
+});
+
+type StickIsBetweenCenterAndEdgeAssertion = {
+  readonly type: `stickIsBetweenCenterAndEdge`;
+  readonly index: number;
+};
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const stickIsBetweenCenterAndEdge = (
+  index: number
+): StickIsBetweenCenterAndEdgeAssertion => ({
+  type: `stickIsBetweenCenterAndEdge`,
+  index,
+});
+
 type Assertion =
   | StatusIsAssertion
   | IsNeutralAssertion
@@ -525,7 +551,9 @@ type Assertion =
   | ClicksStickAssertion
   | PressesLeftAssertion
   | PressesRightAssertion
-  | PressesPauseAssertion;
+  | PressesPauseAssertion
+  | PullsStickDownAndLeftAssertion
+  | StickIsBetweenCenterAndEdgeAssertion;
 
 const describeAssertion = (assertion: Assertion) => {
   switch (assertion.type) {
@@ -595,6 +623,12 @@ const describeAssertion = (assertion: Assertion) => {
 
     case `pressesPause`:
       return `presses the pause button of controller ${assertion.index}`;
+
+    case `pullsStickDownAndLeft`:
+      return `pulls the stick of controller ${assertion.index} down and left`;
+
+    case `stickIsBetweenCenterAndEdge`:
+      return `moves the stick of controller ${assertion.index} between the center and edge`;
   }
 };
 
@@ -828,6 +862,36 @@ const checkAssertion = (
         left: false,
         right: false,
         pause: true,
+        click: false,
+      });
+      break;
+
+    case `pullsStickDownAndLeft`:
+      checkSpecific(assertion.index, {
+        x: -0.7071067811865475,
+        y: 0.7071067811865475,
+        north: false,
+        south: false,
+        east: false,
+        west: false,
+        left: false,
+        right: false,
+        pause: false,
+        click: false,
+      });
+      break;
+
+    case `stickIsBetweenCenterAndEdge`:
+      checkSpecific(assertion.index, {
+        x: 0.3,
+        y: -0.2,
+        north: false,
+        south: false,
+        east: false,
+        west: false,
+        left: false,
+        right: false,
+        pause: false,
         click: false,
       });
       break;
