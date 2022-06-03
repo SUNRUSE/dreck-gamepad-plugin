@@ -11,7 +11,12 @@ Adds a library of TypeScript which provides simple, lowest-common-denominator ga
 
 ### Compatibility
 
-TODO
+| Controller                                  | Android - Chrome | macOS - Chrome | macOS - Firefox | macOS - Safari  | Windows - Chrome | Windows - Firefox |
+| ------------------------------------------- | ---------------- | -------------- | --------------- | --------------- | ---------------- | ----------------- |
+| Keyboard                                    | Future           | Future         | Future          | Future          | Future           | Future            |
+| Joy-Con                                     | Impossible       | Future         | Impossible      | Future, partial | Future           | Impossible        |
+| PowerA Wired Controller for Nintendo Switch | Impossible       | Future         | Impossible      | Future          | Future           | Future            |
+| Wired Xbox 360 Controller                   | Impossible       | Future         | Impossible      | Impossible      | Supported        | Future            |
 
 ## Installation
 
@@ -23,4 +28,29 @@ git submodule add https://github.com/sunruse/dreck-gamepad-plugin submodules/plu
 
 ## Example
 
-TODO
+```typescript
+const gamepadManager = new GamepadManager();
+
+// State will update ONLY when poll() is called.
+gamepadManager.poll();
+
+// 0...7.
+console.log(gamepadManager.state[0]);
+```
+
+```json
+{
+  "x": 0.707107,
+  "y": 0.707107,
+  "click": false,
+  "north": false,
+  "east": false,
+  "west": false,
+  "south": false,
+  "left": false,
+  "right": false,
+  "pause": false
+}
+```
+
+This will be `null` if no controller is connected in this slot.
