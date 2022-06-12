@@ -4,7 +4,7 @@ Adds a library of TypeScript which provides simple, lowest-common-denominator ga
 
 ## Features
 
-- 1 two-axis joystick with click button.
+- 1 two-axis joystick with click button, with deadzone, constrained to a circle.
 - Four face buttons (north, east, south, west).
 - Two digital shoulder buttons (L, R).
 - One pause button.
