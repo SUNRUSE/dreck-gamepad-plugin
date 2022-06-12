@@ -17,6 +17,8 @@ Adds a library of TypeScript which provides simple, lowest-common-denominator ga
 | Joy-Con                                     | Impossible       | Future         | Impossible      | Future, partial | Future           | Impossible        |
 | PowerA Wired Controller for Nintendo Switch | Impossible       | Future         | Impossible      | Impossible      | Future           | Future            |
 | Wired Xbox 360 Controller                   | Impossible       | Future         | Impossible      | Impossible      | Supported        | Supported         |
+| DualShock 4 Wireless Controller             | Unknown          | Unknown        | Unknown         | Unknown         | Future           | Future            |
+| DualSense Wireless Controller               | Future           | Future         | Future          | Future          | Future           | Future            |
 
 ## Installation
 
